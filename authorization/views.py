@@ -33,10 +33,10 @@ class BaseAPIView(View):
 
 
 class AuthorizationView(BaseAPIView):
-    """View for authorizationCode/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/authorization/...'  # TODO: Set correct endpoint
+        endpoint = '/authorization/v1/authorizationCode'
         return self.handle_request('GET', endpoint, request)
     

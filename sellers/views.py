@@ -33,10 +33,10 @@ class BaseAPIView(View):
 
 
 class MarketplaceParticipationsView(BaseAPIView):
-    """View for marketplaceParticipations/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/sellers/...'  # TODO: Set correct endpoint
+        endpoint = '/sellers/v1/marketplaceParticipations'
         return self.handle_request('GET', endpoint, request)
     

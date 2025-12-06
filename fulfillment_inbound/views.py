@@ -33,28 +33,28 @@ class BaseAPIView(View):
 
 
 class InboundShipmentsView(BaseAPIView):
-    """View for shipments/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/fulfillment_inbound/...'  # TODO: Set correct endpoint
+        endpoint = '/fba/inbound/v0/shipments'
         return self.handle_request('GET', endpoint, request)
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/fulfillment_inbound/...'  # TODO: Set correct endpoint
+        endpoint = '/fba/inbound/v0/shipments'
         return self.handle_request('POST', endpoint, request)
     
 class InboundShipmentView(BaseAPIView):
-    """View for shipments/<str:shipment_id>/"""
+    """View for resource collection"""
     
     def get(self, request, shipment_id, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/fulfillment_inbound/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/inbound/v0/shipments/{shipment_id}'
         return self.handle_request('GET', endpoint, request)
     
     def put(self, request, shipment_id, *args, **kwargs):
         """Handle PUT request"""
-        endpoint = f'/fulfillment_inbound/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/inbound/v0/shipments/{shipment_id}'
         return self.handle_request('PUT', endpoint, request)
     

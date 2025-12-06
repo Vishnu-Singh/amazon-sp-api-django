@@ -33,10 +33,10 @@ class BaseAPIView(View):
 
 
 class FeesEstimateView(BaseAPIView):
-    """View for feesEstimate/"""
+    """View for resource collection"""
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/product_fees/...'  # TODO: Set correct endpoint
+        endpoint = '/products/fees/v0/feesEstimate'
         return self.handle_request('POST', endpoint, request)
     

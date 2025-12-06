@@ -33,10 +33,10 @@ class BaseAPIView(View):
 
 
 class InventorySummariesView(BaseAPIView):
-    """View for summaries/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/inventory/...'  # TODO: Set correct endpoint
+        endpoint = '/fba/inventory/v1/summaries'
         return self.handle_request('GET', endpoint, request)
     

@@ -33,18 +33,18 @@ class BaseAPIView(View):
 
 
 class FinancialEventsView(BaseAPIView):
-    """View for financialEvents/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/finance/...'  # TODO: Set correct endpoint
+        endpoint = '/finances/v0/financialEventGroups'
         return self.handle_request('GET', endpoint, request)
     
 class FinancialEventGroupsView(BaseAPIView):
-    """View for financialEventGroups/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/finance/...'  # TODO: Set correct endpoint
+        endpoint = '/finances/v0/financialEventGroups'
         return self.handle_request('GET', endpoint, request)
     

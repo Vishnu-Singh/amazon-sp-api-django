@@ -33,31 +33,31 @@ class BaseAPIView(View):
 
 
 class ReportsView(BaseAPIView):
-    """View for """
+    """View for managing API endpoints"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/reports/...'  # TODO: Set correct endpoint
+        endpoint = '/reports/2021-06-30/reports'
         return self.handle_request('GET', endpoint, request)
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/reports/...'  # TODO: Set correct endpoint
+        endpoint = '/reports/2021-06-30/reports'
         return self.handle_request('POST', endpoint, request)
     
 class ReportView(BaseAPIView):
-    """View for <str:report_id>/"""
+    """View for specific resource"""
     
     def get(self, request, report_id, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/reports/...'  # TODO: Set correct endpoint
+        endpoint = f'/reports/2021-06-30/reports/{report_id}'
         return self.handle_request('GET', endpoint, request)
     
 class ReportDocumentView(BaseAPIView):
-    """View for documents/<str:document_id>/"""
+    """View for resource collection"""
     
     def get(self, request, document_id, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/reports/...'  # TODO: Set correct endpoint
+        endpoint = f'/reports/2021-06-30/documents/{document_id}'
         return self.handle_request('GET', endpoint, request)
     

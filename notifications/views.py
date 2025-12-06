@@ -33,33 +33,33 @@ class BaseAPIView(View):
 
 
 class SubscriptionsView(BaseAPIView):
-    """View for subscriptions/<str:notification_type>/"""
+    """View for resource collection"""
     
     def get(self, request, notification_type, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/notifications/...'  # TODO: Set correct endpoint
+        endpoint = f'/notifications/v1/subscriptions/{notification_type}'
         return self.handle_request('GET', endpoint, request)
     
     def post(self, request, notification_type, *args, **kwargs):
         """Handle POST request"""
-        endpoint = f'/notifications/...'  # TODO: Set correct endpoint
+        endpoint = f'/notifications/v1/subscriptions/{notification_type}'
         return self.handle_request('POST', endpoint, request)
     
     def delete(self, request, notification_type, *args, **kwargs):
         """Handle DELETE request"""
-        endpoint = f'/notifications/...'  # TODO: Set correct endpoint
+        endpoint = f'/notifications/v1/subscriptions/{notification_type}'
         return self.handle_request('DELETE', endpoint, request)
     
 class DestinationsView(BaseAPIView):
-    """View for destinations/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/notifications/...'  # TODO: Set correct endpoint
+        endpoint = '/notifications/v1/destinations'
         return self.handle_request('GET', endpoint, request)
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/notifications/...'  # TODO: Set correct endpoint
+        endpoint = '/notifications/v1/destinations'
         return self.handle_request('POST', endpoint, request)
     

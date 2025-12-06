@@ -33,10 +33,10 @@ class BaseAPIView(View):
 
 
 class RestrictedDataTokenView(BaseAPIView):
-    """View for restrictedDataToken/"""
+    """View for resource collection"""
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/tokens/...'  # TODO: Set correct endpoint
+        endpoint = '/tokens/2021-03-01/restrictedDataToken'
         return self.handle_request('POST', endpoint, request)
     

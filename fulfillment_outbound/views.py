@@ -33,28 +33,28 @@ class BaseAPIView(View):
 
 
 class FulfillmentOrdersView(BaseAPIView):
-    """View for orders/"""
+    """View for resource collection"""
     
     def get(self, request, *args, **kwargs):
         """Handle GET request"""
-        endpoint = '/fulfillment_outbound/...'  # TODO: Set correct endpoint
+        endpoint = '/fba/outbound/2020-07-01/fulfillmentOrders'
         return self.handle_request('GET', endpoint, request)
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/fulfillment_outbound/...'  # TODO: Set correct endpoint
+        endpoint = '/fba/outbound/2020-07-01/fulfillmentOrders'
         return self.handle_request('POST', endpoint, request)
     
 class FulfillmentOrderView(BaseAPIView):
-    """View for orders/<str:order_id>/"""
+    """View for resource collection"""
     
     def get(self, request, order_id, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/fulfillment_outbound/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/outbound/2020-07-01/fulfillmentOrders/{order_id}'
         return self.handle_request('GET', endpoint, request)
     
     def put(self, request, order_id, *args, **kwargs):
         """Handle PUT request"""
-        endpoint = f'/fulfillment_outbound/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/outbound/2020-07-01/fulfillmentOrders/{order_id}'
         return self.handle_request('PUT', endpoint, request)
     

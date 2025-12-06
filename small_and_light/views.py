@@ -33,20 +33,20 @@ class BaseAPIView(View):
 
 
 class SmallAndLightView(BaseAPIView):
-    """View for enrollments/<str:seller_sku>/"""
+    """View for resource collection"""
     
     def get(self, request, seller_sku, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/small_and_light/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/smallAndLight/v1/enrollments/{seller_sku}'
         return self.handle_request('GET', endpoint, request)
     
     def put(self, request, seller_sku, *args, **kwargs):
         """Handle PUT request"""
-        endpoint = f'/small_and_light/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/smallAndLight/v1/enrollments/{seller_sku}'
         return self.handle_request('PUT', endpoint, request)
     
     def delete(self, request, seller_sku, *args, **kwargs):
         """Handle DELETE request"""
-        endpoint = f'/small_and_light/...'  # TODO: Set correct endpoint
+        endpoint = f'/fba/smallAndLight/v1/enrollments/{seller_sku}'
         return self.handle_request('DELETE', endpoint, request)
     

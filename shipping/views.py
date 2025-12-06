@@ -33,18 +33,18 @@ class BaseAPIView(View):
 
 
 class ShippingView(BaseAPIView):
-    """View for shipments/"""
+    """View for resource collection"""
     
     def post(self, request, *args, **kwargs):
         """Handle POST request"""
-        endpoint = '/shipping/...'  # TODO: Set correct endpoint
+        endpoint = '/shipping/v1/shipments'
         return self.handle_request('POST', endpoint, request)
     
 class TrackingView(BaseAPIView):
-    """View for tracking/<str:tracking_id>/"""
+    """View for resource collection"""
     
     def get(self, request, tracking_id, *args, **kwargs):
         """Handle GET request"""
-        endpoint = f'/shipping/...'  # TODO: Set correct endpoint
+        endpoint = f'/shipping/v1/tracking/{tracking_id}'
         return self.handle_request('GET', endpoint, request)
     
