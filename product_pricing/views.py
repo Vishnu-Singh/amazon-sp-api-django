@@ -33,18 +33,18 @@ class BaseAPIView(View):
 
 
 class PricingView(BaseAPIView):
-    """View for resource collection"""
+    """View for retrieving product pricing information"""
     
     def get(self, request, *args, **kwargs):
-        """Handle GET request"""
-        endpoint = '/products/pricing/v0/competitivePrice'
+        """Handle GET request for pricing information"""
+        endpoint = '/products/pricing/v0/price'
         return self.handle_request('GET', endpoint, request)
     
 class CompetitivePricingView(BaseAPIView):
-    """View for resource collection"""
+    """View for retrieving competitive pricing information"""
     
     def get(self, request, *args, **kwargs):
-        """Handle GET request"""
+        """Handle GET request for competitive pricing"""
         endpoint = '/products/pricing/v0/competitivePrice'
         return self.handle_request('GET', endpoint, request)
     

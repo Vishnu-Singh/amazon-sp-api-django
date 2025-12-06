@@ -33,18 +33,18 @@ class BaseAPIView(View):
 
 
 class EligibleShipmentsView(BaseAPIView):
-    """View for resource collection"""
+    """View for retrieving eligible shipping services"""
     
     def post(self, request, *args, **kwargs):
-        """Handle POST request"""
-        endpoint = '/mfn/v0/shipments'
+        """Handle POST request to get eligible shipping services"""
+        endpoint = '/mfn/v0/eligibleShippingServices'
         return self.handle_request('POST', endpoint, request)
     
 class ShipmentsView(BaseAPIView):
-    """View for resource collection"""
+    """View for creating merchant fulfillment shipments"""
     
     def post(self, request, *args, **kwargs):
-        """Handle POST request"""
+        """Handle POST request to create a shipment"""
         endpoint = '/mfn/v0/shipments'
         return self.handle_request('POST', endpoint, request)
     
