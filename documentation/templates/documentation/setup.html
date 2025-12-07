@@ -1,0 +1,150 @@
+{% extends 'documentation/base.html' %}
+
+{% block title %}Setup Guide{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2>Setup & Installation Guide</h2>
+    
+    <h3>📋 Prerequisites</h3>
+    <ul>
+        <li>Python 3.11 or higher</li>
+        <li>Docker and Docker Compose (for containerized deployment)</li>
+        <li>Amazon SP-API credentials (Client ID, Client Secret, Refresh Token, AWS keys)</li>
+        <li>PostgreSQL 15+ (or use SQLite for testing)</li>
+    </ul>
+    
+    <h3>🐳 Option 1: Docker Deployment (Recommended)</h3>
+    
+    <h4>Step 1: Clone the Repository</h4>
+    <pre><code>git clone https://github.com/Vishnu-Singh/amazon-sp-api-django.git
+cd amazon-sp-api-django</code></pre>
+    
+    <h4>Step 2: Configure Environment Variables</h4>
+    <pre><code>cp .env.example .env
+nano .env  # or use your preferred editor</code></pre>
+    
+    <p>Edit the .env file with your Amazon SP-API credentials:</p>
+    <pre><code># Django Settings
+SECRET_KEY=your-secret-key-here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+# Database
+DB_NAME=amazon_sp_api_db
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_HOST=db
+DB_PORT=5432
+
+# Amazon SP-API Credentials
+AMAZON_SP_API_BASE_URL=https://sellingpartnerapi-na.amazon.com
+AMAZON_SP_API_REFRESH_TOKEN=your_refresh_token
+AMAZON_SP_API_CLIENT_ID=your_client_id
+AMAZON_SP_API_CLIENT_SECRET=your_client_secret
+AMAZON_SP_API_ACCESS_KEY=your_aws_access_key
+AMAZON_SP_API_SECRET_KEY=your_aws_secret_key
+AMAZON_SP_API_ROLE_ARN=arn:aws:iam::xxxxx:role/your-role</code></pre>
+    
+    <h4>Step 3: Build and Start Services</h4>
+    <pre><code>docker-compose up --build</code></pre>
+    
+    <h4>Step 4: Run Migrations (in another terminal)</h4>
+    <pre><code>docker-compose exec web python manage.py migrate</code></pre>
+    
+    <h4>Step 5: Create Admin User</h4>
+    <pre><code>docker-compose exec web python manage.py createsuperuser</code></pre>
+    
+    <h4>Step 6: Access the Application</h4>
+    <ul>
+        <li><strong>API Root:</strong> <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></li>
+        <li><strong>Admin Panel:</strong> <a href="http://localhost:8000/admin/" target="_blank">http://localhost:8000/admin/</a></li>
+        <li><strong>Documentation:</strong> <a href="http://localhost:8000/docs/" target="_blank">http://localhost:8000/docs/</a></li>
+    </ul>
+    
+    <h3>💻 Option 2: Local Development</h3>
+    
+    <h4>Step 1: Create Virtual Environment</h4>
+    <pre><code>python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate</code></pre>
+    
+    <h4>Step 2: Install Dependencies</h4>
+    <pre><code>pip install -r requirements.txt</code></pre>
+    
+    <h4>Step 3: Configure Environment</h4>
+    <pre><code>cp .env.example .env
+# Edit .env with your credentials
+# For SQLite testing, set USE_SQLITE=True</code></pre>
+    
+    <h4>Step 4: Run Migrations</h4>
+    <pre><code>python manage.py migrate</code></pre>
+    
+    <h4>Step 5: Create Superuser</h4>
+    <pre><code>python manage.py createsuperuser</code></pre>
+    
+    <h4>Step 6: Start Development Server</h4>
+    <pre><code>python manage.py runserver</code></pre>
+    
+    <h3>🔑 Getting Amazon SP-API Credentials</h3>
+    
+    <ol>
+        <li><strong>Register as Developer:</strong> Go to <a href="https://sellercentral.amazon.com/" target="_blank">Amazon Seller Central</a></li>
+        <li><strong>Create SP-API Application:</strong> Navigate to Apps & Services → Develop Apps</li>
+        <li><strong>Get Client ID & Secret:</strong> Note your Client ID and Client Secret</li>
+        <li><strong>Complete OAuth Flow:</strong> Authorize your application to get Refresh Token</li>
+        <li><strong>Set Up AWS IAM:</strong> Create IAM user and role for API signing</li>
+        <li><strong>Get AWS Credentials:</strong> Note your Access Key, Secret Key, and Role ARN</li>
+    </ol>
+    
+    <h3>✅ Verify Installation</h3>
+    
+    <h4>Check API Root</h4>
+    <pre><code>curl http://localhost:8000/</code></pre>
+    
+    <p>Expected response:</p>
+    <pre><code>{
+  "message": "Amazon SP-API Django Integration",
+  "version": "1.0.0",
+  "endpoints": {
+    "feeds": "/api/feeds/",
+    "catalog": "/api/catalog/",
+    "orders": "/api/orders/",
+    ...
+  }
+}</code></pre>
+    
+    <h4>Test an Endpoint</h4>
+    <pre><code>curl "http://localhost:8000/api/feeds/?marketplaceIds=ATVPDKIKX0DER"</code></pre>
+    
+    <h3>🛠️ Troubleshooting</h3>
+    
+    <h4>Database Connection Issues</h4>
+    <ul>
+        <li>Ensure PostgreSQL container is running: <code>docker-compose ps</code></li>
+        <li>Check database credentials in .env file</li>
+        <li>For local development, use SQLite: <code>USE_SQLITE=True</code></li>
+    </ul>
+    
+    <h4>Port Already in Use</h4>
+    <pre><code>docker-compose down
+# Or change port in docker-compose.yml</code></pre>
+    
+    <h4>Amazon SP-API Authentication Errors</h4>
+    <ul>
+        <li>Verify credentials in .env file</li>
+        <li>Check refresh token validity</li>
+        <li>Ensure AWS IAM permissions are correct</li>
+    </ul>
+    
+    <h4>View Logs</h4>
+    <pre><code>docker-compose logs -f web</code></pre>
+    
+    <h3>🚀 Next Steps</h3>
+    <ul>
+        <li><a href="{% url 'documentation:api' %}">Explore API Documentation</a></li>
+        <li>Test API endpoints with your Amazon SP-API credentials</li>
+        <li>Review the <a href="{% url 'documentation:changelog' %}">Changelog</a> for updates</li>
+        <li>Read the <a href="https://github.com/Vishnu-Singh/amazon-sp-api-django/blob/main/DEPLOYMENT_GUIDE.md" target="_blank">Deployment Guide</a> for production deployment</li>
+    </ul>
+</div>
+{% endblock %}
