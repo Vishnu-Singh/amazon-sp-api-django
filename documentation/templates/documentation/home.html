@@ -1,0 +1,100 @@
+{% extends 'documentation/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2>Welcome to Amazon SP-API Django Integration Documentation</h2>
+    
+    <p>This is a complete, production-ready Django project for Amazon Selling Partner API (SP-API) integration with all 18 API categories implemented as separate Django apps.</p>
+    
+    <div class="grid">
+        <div class="card">
+            <h3>🎯 Quick Start</h3>
+            <p>Get started in 5 minutes with Docker:</p>
+            <pre><code>git clone https://github.com/Vishnu-Singh/amazon-sp-api-django.git
+cd amazon-sp-api-django
+cp .env.example .env
+docker-compose up --build</code></pre>
+            <p><a href="{% url 'documentation:setup' %}">View full setup guide →</a></p>
+        </div>
+        
+        <div class="card">
+            <h3>📚 API Reference</h3>
+            <p>Explore all 18 Amazon SP-API categories with detailed endpoint documentation.</p>
+            <p><a href="{% url 'documentation:api' %}">Browse API Documentation →</a></p>
+        </div>
+    </div>
+    
+    <h3>✨ Features</h3>
+    <ul>
+        <li><strong>18 API Categories:</strong> Complete coverage of all Amazon SP-API endpoints</li>
+        <li><strong>Production-Ready:</strong> Docker containerization, environment configuration, error handling</li>
+        <li><strong>RESTful Design:</strong> Clean API architecture with Django REST Framework</li>
+        <li><strong>Modular Structure:</strong> Each API category is a separate Django app</li>
+        <li><strong>Comprehensive Documentation:</strong> Setup guides, API reference, and examples</li>
+    </ul>
+    
+    <h3>🔧 Technology Stack</h3>
+    <ul>
+        <li><strong>Django 4.2+</strong> - Web framework</li>
+        <li><strong>Django REST Framework</strong> - RESTful API support</li>
+        <li><strong>PostgreSQL</strong> - Primary database (SQLite fallback for testing)</li>
+        <li><strong>Docker & Docker Compose</strong> - Containerization</li>
+        <li><strong>Gunicorn</strong> - Production WSGI server</li>
+        <li><strong>python-dotenv</strong> - Environment configuration</li>
+    </ul>
+    
+    <h3>📦 18 API Categories</h3>
+    <div class="grid">
+        <div>
+            <ul>
+                <li>📊 Feeds - Data upload and processing</li>
+                <li>📦 Catalog - Product search and retrieval</li>
+                <li>🛒 Orders - Order management</li>
+                <li>📝 Listings - Product listing CRUD</li>
+                <li>📈 Reports - Report generation</li>
+                <li>📥 Fulfillment Inbound - FBA inbound shipments</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>📤 Fulfillment Outbound - Multi-Channel Fulfillment</li>
+                <li>🚚 Merchant Fulfillment - Seller-fulfilled shipping</li>
+                <li>💰 Finance - Financial data</li>
+                <li>💵 Product Pricing - Pricing information</li>
+                <li>💳 Product Fees - Fee estimation</li>
+                <li>👤 Sellers - Seller account info</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>📋 Inventory - FBA inventory data</li>
+                <li>🚢 Shipping - Shipping services</li>
+                <li>🔔 Notifications - Notification subscriptions</li>
+                <li>🔐 Authorization - Authorization management</li>
+                <li>📦 Small and Light - Small and Light program</li>
+                <li>🎫 Tokens - Restricted data tokens</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>🚀 Getting Started</h3>
+    <ol>
+        <li><strong>Prerequisites:</strong> Docker, Docker Compose, Amazon SP-API credentials</li>
+        <li><strong>Clone the repository:</strong> Get the code from GitHub</li>
+        <li><strong>Configure environment:</strong> Copy .env.example to .env and add your credentials</li>
+        <li><strong>Start services:</strong> Run <code>docker-compose up --build</code></li>
+        <li><strong>Access the API:</strong> Navigate to <code>http://localhost:8000</code></li>
+    </ol>
+    
+    <p><a href="{% url 'documentation:setup' %}">View detailed setup instructions →</a></p>
+    
+    <h3>📖 Additional Resources</h3>
+    <ul>
+        <li><a href="https://developer-docs.amazon.com/sp-api/" target="_blank">Official Amazon SP-API Documentation</a></li>
+        <li><a href="https://github.com/Vishnu-Singh/amazon-sp-api-django" target="_blank">GitHub Repository</a></li>
+        <li><a href="{% url 'documentation:changelog' %}">Changelog & Version History</a></li>
+    </ul>
+</div>
+{% endblock %}

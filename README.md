@@ -31,6 +31,7 @@ A complete, production-ready Django project for Amazon Selling Partner API (SP-A
   - Docker containerization for easy deployment
   - PostgreSQL database support
   - Comprehensive error handling
+  - **Interactive Documentation App** - Built-in web-based documentation with setup guides and API reference
 
 ## 📋 Prerequisites
 
@@ -59,7 +60,10 @@ A complete, production-ready Django project for Amazon Selling Partner API (SP-A
    docker-compose up --build
    ```
 
-4. **The API will be available at:** `http://localhost:8000`
+4. **The API will be available at:** 
+   - **API Root:** `http://localhost:8000`
+   - **Documentation:** `http://localhost:8000/docs/`
+   - **Admin Panel:** `http://localhost:8000/admin/`
 
 ### Option 2: Local Development
 
@@ -133,7 +137,24 @@ AMAZON_SP_API_ROLE_ARN=arn:aws:iam::xxxxx:role/your-role
 4. Complete the OAuth authorization flow to get your **Refresh Token**
 5. Set up AWS IAM credentials for API signing
 
-## 📖 API Documentation
+## 📖 Documentation
+
+### Interactive Documentation App
+
+This project includes a comprehensive **built-in documentation app** accessible at `http://localhost:8000/docs/` that provides:
+
+- **📚 Home Page** - Project overview, features, and quick start guide
+- **🔧 Setup Guide** - Detailed installation instructions for Docker and local development
+- **📖 API Reference** - Complete documentation for all 18 API categories with:
+  - Endpoint descriptions and HTTP methods
+  - Request parameters and requirements
+  - Example requests with curl commands
+  - Amazon SP-API version information
+  - Marketplace IDs reference
+- **📝 Changelog** - Version history and planned features
+- **🔗 JSON API Spec** - OpenAPI-style specification at `/docs/api/reference.json`
+
+![Documentation Home](https://github.com/user-attachments/assets/1f1ade67-c2ad-45a8-b12d-baf510a7cd26)
 
 ### Root Endpoint
 

@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'authorization',
     'small_and_light',
     'tokens',
+    # Documentation App
+    'documentation',
 ]
 
 MIDDLEWARE = [
